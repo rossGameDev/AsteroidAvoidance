@@ -286,6 +286,15 @@ gameStates[1] = function(){
 
 //---Game Over Screen---
 gameStates[2] = function(){
+    document.getElementById("submitButton").addEventListener("click", function(event){
+        const playerName = document.getElementById("Score").value;
+        const playerScore = highScore;
+
+        alert(playerName);
+
+        fetch("/saveScore", {method:"post",headers:{"Content-Type":"application/json"}, body:JSON.stringify({game:playerName + "    Score: " + playerScore})});
+    });
+
     highScoreElements.style.display = "block";
     if(score > highScore){
         highScore = score;
