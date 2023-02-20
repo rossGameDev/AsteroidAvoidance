@@ -292,7 +292,7 @@ gameStates[2] = function(){
 
         alert(playerName);
 
-        fetch("/saveScore", {method:"post",headers:{"Content-Type":"application/json"}, body:JSON.stringify({game:playerName + "    Score: " + playerScore})});
+        fetch("/saveScore", {method:"post",headers:{"Content-Type":"application/json"}, body:JSON.stringify({game:playerName})});
     });
 
     highScoreElements.style.display = "block";

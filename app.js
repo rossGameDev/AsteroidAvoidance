@@ -60,6 +60,19 @@ app.get("/HighScores", function(req, res){
     });
 });
 
+app.post("/searchGames", function(req, res){
+    console.log(req.body.game);
+    //res.redirect("searched.html?game=" + req.body.game);
+
+    Game.find({"game":req.body.game}).then(function(game){
+        //console.log(game[0].game);
+        //res.redirect("searched.html?game=" + game);
+        res.redirect("searched.html?id=" + game[0]._id + "&game=" + game[0].game);
+    }).catch(function(){
+        res.redirect("searched.html?game=");
+    })
+})
+
 app.use(express.static(__dirname+"/AsteroidAvoidance"));
 
 app.listen(port, function(){
