@@ -54,7 +54,7 @@ app.post("/deleteGame", function(req, res){
 });
 
 app.get("/HighScores", function(req, res){
-    Game.find({}).then(function(game){
+    Game.find({}).sort({"game":1}).then(function(game){
         //console.log({game});
         res.json({game});
     });
